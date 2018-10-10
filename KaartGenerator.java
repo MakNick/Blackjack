@@ -8,6 +8,8 @@ public class KaartGenerator{
 	String[] waarde = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Boer", "Vrouw", "Koning", "Aas"};
 	int[] rekenWaarde = {2,3,4,5,6,7,8,9,10,10,10,10,11};
 	ArrayList<Kaart> nieuwDek = new ArrayList<Kaart>();
+	int startWaarde;
+	int getrokkenWaarde;
 	
 	void vulDek() {
 		for(int indexKleur = 0; indexKleur < kleur.length; indexKleur++) {
@@ -27,28 +29,38 @@ public class KaartGenerator{
 		System.out.println();
 	}
 	
-	void geefBeginKaarten() {
-		System.out.println("Je krijgt de kaarten: " + nieuwDek.get(0) + " / " + nieuwDek.get(1));
-		System.out.println("De totale waarde is: " + (nieuwDek.get(0).rekenWaarde + nieuwDek.get(1).rekenWaarde) + "\n");
-		int totaalWaarde = (nieuwDek.get(0).rekenWaarde + nieuwDek.get(1).rekenWaarde);
+	public void geefBeginKaarten() {
+		System.out.println("Een nieuw spel begint\nJe krijgt de kaarten: " + nieuwDek.get(0) + " / " + nieuwDek.get(1));
+		startWaarde = (nieuwDek.get(0).rekenWaarde + nieuwDek.get(1).rekenWaarde);
+		System.out.println("De totale waarde is: " + startWaarde + "\n");
 		nieuwDek.remove(0);
 		nieuwDek.remove(0);
 	}
 	
-	void geefKaart() {
-		System.out.println(nieuwDek.get(0));
-		System.out.println();
-		nieuwDek.remove(0);
-		System.out.println(nieuwDek);
-		System.out.println();
+	public void geefKaart() {
+		System.out.println("Je krijgt een kaart, namelijk een " + nieuwDek.get(0));
+		getrokkenWaarde = nieuwDek.get(0).rekenWaarde;
+		int totaleWaarde = startWaarde + getrokkenWaarde;
+		if (totaleWaarde <= 21) {
+			System.out.println("Je totale score is " + totaleWaarde);
+			startWaarde = totaleWaarde;
+			nieuwDek.remove(0);
+			System.out.println();
+		} else if (totaleWaarde == 21){
+			System.out.println("Blackjack!");
+		} else {
+			System.out.println("Je totale score is " + totaleWaarde);
+			System.out.println("Game over!\n\n");
+			geefBeginKaarten();
+		}
+				
 	}
 	
 	void pasKaart() {
+		System.out.println("Je past");
 		nieuwDek.remove(0);
-		System.out.println(nieuwDek);
 		System.out.println();
 	}
 	
-	
-	
+		
 }

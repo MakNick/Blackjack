@@ -7,8 +7,6 @@ package WeekopdrachtBlackjack;
 			Blackjack blackjack = new Blackjack();
 			blackjack.starten();
 			
-			KaartGenerator kaartenMaken = new KaartGenerator();
-			kaartenMaken.vulDek();
 			
 		}
 

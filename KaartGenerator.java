@@ -12,6 +12,7 @@ public class KaartGenerator{
 	int getrokkenWaarde;
 	
 	void vulDek() {
+		nieuwDek.clear();
 		for(int indexKleur = 0; indexKleur < kleur.length; indexKleur++) {
 			for (int indexWaarde = 0; indexWaarde < waarde.length; indexWaarde++){
 				Kaart kaart = new Kaart();
@@ -41,17 +42,18 @@ public class KaartGenerator{
 		System.out.println("Je krijgt een kaart, namelijk een " + nieuwDek.get(0));
 		getrokkenWaarde = nieuwDek.get(0).rekenWaarde;
 		int totaleWaarde = startWaarde + getrokkenWaarde;
-		if (totaleWaarde <= 21) {
+		if (totaleWaarde < 21) {
 			System.out.println("Je totale score is " + totaleWaarde);
 			startWaarde = totaleWaarde;
 			nieuwDek.remove(0);
 			System.out.println();
 		} else if (totaleWaarde == 21){
 			System.out.println("Blackjack!");
+			Blackjack.doorgaan = false;
 		} else {
 			System.out.println("Je totale score is " + totaleWaarde);
 			System.out.println("Game over!\n\n");
-			geefBeginKaarten();
+			Blackjack.doorgaan = false;
 		}
 				
 	}
@@ -62,5 +64,6 @@ public class KaartGenerator{
 		System.out.println();
 	}
 	
+
 		
 }

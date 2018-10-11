@@ -4,9 +4,12 @@ package WeekopdrachtBlackjack;
 
 		public static void main(String[] args) {
 			
+			
 			Blackjack blackjack = new Blackjack();
 			blackjack.starten();
 			
+			
+		
 			
 		}
 

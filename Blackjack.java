@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Blackjack {
 		KaartGenerator kaartenMaken = new KaartGenerator();
-		boolean doorgaan = true;
+		static boolean doorgaan = true;
 		
 		void starten() {
 			Scanner scanner = new Scanner(System.in);
